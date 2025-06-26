@@ -76,12 +76,7 @@ __all__ = [
 ]
 
 
-try:
-    # For manim < 0.15.0
-    from manim.mobject.opengl_compatibility import ConvertToOpenGL
-except ModuleNotFoundError:
-    # For manim >= 0.15.0
-    from manim.mobject.opengl.opengl_compatibility import ConvertToOpenGL
+from manim.mobject.opengl.opengl_compatibility import ConvertToOpenGL
 
 
 class Space(Mobject, metaclass=ConvertToOpenGL):
@@ -109,7 +104,7 @@ class SpaceScene(Scene):
         self.space = Space(gravity=self.GRAVITY)
         super().__init__(renderer=renderer, **kwargs)
 
-    def setup(self):
+    async def setup(self):
         """Used internally"""
         self.add(self.space)
         self.space.add_updater(_step)

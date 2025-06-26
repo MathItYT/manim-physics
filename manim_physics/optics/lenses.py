@@ -16,12 +16,7 @@ from shapely import geometry as gm
 __all__ = ["Lens"]
 
 
-try:
-    # For manim < 0.15.0
-    from manim.mobject.opengl_compatibility import ConvertToOpenGL
-except ModuleNotFoundError:
-    # For manim >= 0.15.0
-    from manim.mobject.opengl.opengl_compatibility import ConvertToOpenGL
+from manim.mobject.opengl.opengl_compatibility import ConvertToOpenGL
 
 
 def intersection(vmob1: VMobject, vmob2: VMobject) -> Iterable[Iterable[float]]:
